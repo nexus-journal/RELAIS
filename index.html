@@ -3,454 +3,154 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#081321">
-<meta name="description" content="RELAIS — Moins de complications. Plus de solutions.">
-<title>RELAIS — Votre centre de solutions</title>
+<meta name="theme-color" content="#0a1220">
+<meta name="description" content="RELAIS — Organisez vos démarches et avancez étape par étape.">
+<title>RELAIS — Moins de complications. Plus de solutions.</title>
 <style>
 :root{
-  color-scheme:dark;--bg:#081321;--panel:#101f30;--panel2:#14283b;
-  --line:#243c52;--text:#edf5fb;--muted:#9aafc1;--cyan:#72d9eb;
-  --mint:#86e2c2;--blue:#6ca5ff;--danger:#ff9d9d;--radius:18px;
+ --bg:#08111e;--bg2:#0c1828;--panel:#101f31;--panel2:#14263a;--line:rgba(179,205,231,.12);
+ --text:#edf5fc;--muted:#91a5b9;--soft:#b9c9d8;--accent:#62d5cb;--accent2:#85e4da;
+ --blue:#7caeff;--warn:#f4c36f;--danger:#ff8888;--ok:#79d5a7;--shadow:0 18px 50px rgba(0,0,0,.24);
+ --radius:20px;--radius2:14px;--nav-h:76px
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 15% 0%,#15324b 0,transparent 38%),var(--bg);color:var(--text);font:15px/1.45 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-button,input,textarea,select{font:inherit}
-button{cursor:pointer}
-button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
-.app{max-width:920px;margin:auto;padding:18px 15px calc(100px + env(safe-area-inset-bottom))}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 2px 20px}
-.brand{display:flex;align-items:center;gap:11px}
-.logo{width:43px;height:43px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,#54b8e7,#83e5d0);color:#071522;font-size:21px;font-weight:900;box-shadow:0 8px 25px #52c7df33}
-.brand h1{font-size:21px;line-height:1;margin:0;letter-spacing:2px}
-.brand small{display:block;color:var(--muted);font-size:9px;letter-spacing:1.25px;margin-top:5px}
-.version{font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:7px 10px}
-.view{display:none}.view.active{display:block}
-.hero{position:relative;overflow:hidden;padding:25px 22px;border:1px solid #2b526a;border-radius:24px;background:linear-gradient(130deg,#123149,#0d1b2b 72%)}
-.hero:after{content:"";position:absolute;width:180px;height:180px;border:1px solid #70dbea22;border-radius:50%;right:-65px;top:-72px;box-shadow:0 0 0 24px #70dbea10,0 0 0 49px #70dbea08;pointer-events:none}
-.eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:1.7px;font-weight:750;color:var(--cyan)}
-.hero h2{font-size:clamp(27px,7vw,38px);line-height:1.08;letter-spacing:-.8px;margin:12px 0}
-.hero p{max-width:540px;color:#b2c3d1;margin:0 0 18px;font-size:14px}
-.primary{border:0;border-radius:13px;padding:12px 16px;background:linear-gradient(100deg,#6bd5ec,#8be4c4);color:#071522;font-weight:800}
-.secondary,.quiet,.danger-btn{border:1px solid var(--line);border-radius:12px;padding:10px 13px;background:var(--panel2);color:var(--text)}
-.quiet{background:transparent;color:var(--muted)}
-.danger-btn{color:var(--danger);border-color:#68404a;background:#271923}
-.section{margin-top:24px}
-.section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
-.section h3,.page-title{font-size:18px;margin:0}
-.muted{color:var(--muted)}.small{font-size:12px}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
-.tile,.card{border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(145deg,var(--panel),#0d1a28);padding:15px}
-.tile{min-height:136px;text-align:left;transition:transform .15s,border-color .15s}
-.tile:active{transform:scale(.985)}
-.tile:hover{border-color:#3e7188}
-.tile .icon{font-size:22px;margin-bottom:12px}
-.tile b{display:block;margin-bottom:5px;font-size:14px}
-.tile p{margin:0;color:var(--muted);font-size:12px;line-height:1.45}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:14px}
-.stat{background:#0b1927;border:1px solid var(--line);border-radius:14px;padding:12px 10px}
-.stat strong{display:block;font-size:21px;color:var(--cyan);font-variant-numeric:tabular-nums}
-.stat span{font-size:10px;color:var(--muted)}
-.field{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:12px;background:#091624;color:var(--text)}
-.field::placeholder{color:#71899d}
-textarea.field{min-height:104px;resize:vertical}
-label{display:block;font-size:12px;color:#b9cad7;margin:14px 0 7px}
-.form-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}
-.notice{border:1px solid #2b5369;background:#0d2030;border-radius:13px;padding:12px;color:#b6c8d5;font-size:12px;line-height:1.5}
-.case{border:1px solid var(--line);background:#0d1b29;border-radius:15px;padding:14px;margin-top:10px}
-.case-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
-.case h4{margin:0 0 5px;font-size:15px;overflow-wrap:anywhere}
-.case p{margin:0;color:var(--muted);font-size:12px;line-height:1.5}
-.tag{white-space:nowrap;font-size:10px;color:var(--cyan);border:1px solid #28556b;background:#102838;padding:5px 8px;border-radius:30px}
-.tag.done{color:var(--mint);border-color:#2c6754;background:#102b26}
-.case-meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:11px;color:var(--muted);font-size:11px}
-.progress{height:5px;background:#203447;border-radius:10px;margin-top:12px;overflow:hidden}
-.progress span{display:block;height:100%;background:linear-gradient(90deg,#56bce3,#83e1c2);border-radius:10px}
-.case-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}
-.case-actions button{font-size:11px;padding:8px 10px}
-.empty{text-align:center;color:var(--muted);font-size:13px;padding:25px 12px;border:1px dashed var(--line);border-radius:15px}
-.steps{list-style:none;padding:0;margin:12px 0}
-.steps li{display:flex;gap:10px;padding:11px 0;border-bottom:1px solid #1c3042}
-.steps li:last-child{border-bottom:0}
-.check{width:21px;height:21px;accent-color:#78ddc0;flex:none;margin-top:1px}
-.step-copy{flex:1;min-width:0}
-.step-copy b{display:block;font-size:13px}
-.step-copy small{display:block;color:var(--muted);font-size:11px;margin-top:3px}
-.bar{position:fixed;z-index:5;bottom:0;left:0;right:0;padding:9px 10px calc(9px + env(safe-area-inset-bottom));background:#081321f2;border-top:1px solid #243c52;backdrop-filter:blur(16px)}
-.nav{max-width:920px;margin:auto;display:flex;justify-content:space-around}
-.nav button{border:0;background:none;color:var(--muted);font-size:10px;padding:5px 7px;display:grid;justify-items:center;gap:4px;min-width:55px}
-.nav button span{font-size:19px;line-height:1.2}
-.nav button.active{color:var(--cyan)}
-.top-actions{display:flex;gap:8px;flex-wrap:wrap}
-.divider{height:1px;background:var(--line);margin:16px 0}
-.modal{position:fixed;inset:0;background:#000a;display:none;align-items:flex-end;justify-content:center;padding:12px;z-index:10}
-.modal.open{display:flex}
-.sheet{width:min(100%,680px);max-height:91vh;overflow:auto;border:1px solid var(--line);border-radius:22px;background:#0e1e2e;padding:19px}
-.sheet-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.sheet h3{margin:0;font-size:18px}
-.close{border:1px solid var(--line);border-radius:10px;background:transparent;color:var(--muted);padding:7px 10px}
-footer{text-align:center;color:#748b9e;font-size:10px;padding:25px 0 4px}
-@media(min-width:650px){.app{padding:28px 22px 110px}.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.modal{align-items:center}.hero{padding:31px 29px}}
-@media(max-width:360px){.version{display:none}.grid{gap:8px}.tile{padding:12px}.stats{gap:6px}}
+:root[data-theme="light"]{
+ --bg:#edf3f7;--bg2:#f6f9fb;--panel:#fff;--panel2:#f3f7fa;--line:rgba(31,60,87,.12);
+ --text:#14263a;--muted:#63798e;--soft:#3e566d;--accent:#087f78;--accent2:#0b968d;
+ --blue:#316fc0;--warn:#986415;--danger:#b84343;--ok:#207c4e;--shadow:0 14px 35px rgba(20,45,68,.08)
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(900px 420px at 80% -10%,rgba(72,160,174,.13),transparent 60%),var(--bg);color:var(--text);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh}button,input,select,textarea{font:inherit}button{cursor:pointer}a{color:var(--accent2)}.app{max-width:1160px;margin:0 auto;padding:0 22px 110px}.topbar{height:82px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);position:relative;z-index:2}.brand{display:flex;align-items:center;gap:12px}.brand-mark{height:42px;width:42px;border-radius:14px;background:linear-gradient(145deg,#73e2d3,#299b9d);display:grid;place-items:center;color:#062226;font-weight:900;font-size:20px;box-shadow:0 8px 24px rgba(60,194,182,.2)}.brand-name{font-weight:850;letter-spacing:.16em;font-size:15px}.brand-tag{font-size:11px;color:var(--muted);letter-spacing:.02em}.top-actions{display:flex;gap:9px;align-items:center}.icon-btn{border:1px solid var(--line);background:var(--panel);color:var(--text);width:40px;height:40px;border-radius:13px;display:grid;place-items:center}.avatar{width:36px;height:36px;border-radius:50%;background:var(--panel2);display:grid;place-items:center;color:var(--accent);font-weight:800}.view{display:none;padding:28px 0 0;animation:fade .22s ease}.view.active{display:block}@keyframes fade{from{opacity:.4;transform:translateY(5px)}to{opacity:1;transform:none}}.eyebrow{text-transform:uppercase;letter-spacing:.15em;font-size:10px;color:var(--accent);font-weight:800}.page-title{font-size:clamp(27px,4vw,39px);line-height:1.12;letter-spacing:-.04em;margin:7px 0 9px}.sub{color:var(--muted);max-width:650px;margin:0}.hero{position:relative;overflow:hidden;border:1px solid rgba(98,213,203,.19);background:linear-gradient(115deg,rgba(31,91,98,.32),rgba(18,38,58,.65) 58%,rgba(25,52,73,.48));border-radius:26px;padding:26px 28px;margin:26px 0 22px;box-shadow:var(--shadow)}.hero:after{content:"";position:absolute;width:250px;height:250px;border:1px solid rgba(98,213,203,.13);border-radius:50%;right:-65px;top:-105px;box-shadow:0 0 0 28px rgba(98,213,203,.035),0 0 0 58px rgba(98,213,203,.025)}.hero h2{font-size:clamp(22px,3vw,30px);line-height:1.18;letter-spacing:-.03em;margin:8px 0}.hero p{color:#b9d0db;max-width:560px;margin:0 0 18px}.hero-actions{display:flex;gap:10px;flex-wrap:wrap;position:relative;z-index:1}.btn{border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:13px;padding:11px 15px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:.18s}.btn:hover{transform:translateY(-1px);border-color:rgba(98,213,203,.42)}.btn.primary{background:var(--accent);color:#062527;border-color:transparent}.btn.ghost{background:transparent}.btn.danger{color:var(--danger)}.btn.small{padding:8px 11px;font-size:13px;border-radius:11px}.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0 27px}.stat,.card,.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.stat{padding:17px}.stat-top{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:12px}.stat-icon{font-size:18px}.stat strong{display:block;font-size:29px;line-height:1.2;margin-top:8px;letter-spacing:-.04em}.stat small{color:var(--muted);font-size:11px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:28px 0 13px}.section-head h3{margin:0;font-size:19px;letter-spacing:-.02em}.section-head p{margin:3px 0 0;color:var(--muted);font-size:12px}.text-btn{border:0;background:none;color:var(--accent2);font-weight:750;padding:7px}.grid2{display:grid;grid-template-columns:1.25fr .75fr;gap:15px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.card{padding:17px}.card h3,.card h4{margin:0}.card p{color:var(--muted);margin:7px 0 0;font-size:13px}.quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.quick{border:1px solid var(--line);background:var(--panel);border-radius:16px;padding:16px;text-align:left;color:var(--text);min-height:112px}.quick span{display:block;font-size:22px;margin-bottom:10px}.quick b{font-size:13px}.quick:hover{border-color:rgba(98,213,203,.45);transform:translateY(-2px)}.case-list{display:grid;gap:10px}.case-row{display:flex;align-items:center;gap:13px;padding:15px;border:1px solid var(--line);background:var(--panel);border-radius:16px;min-width:0}.case-symbol{height:42px;width:42px;flex:0 0 42px;border-radius:13px;background:var(--panel2);display:grid;place-items:center;font-size:19px}.case-main{min-width:0;flex:1}.case-main strong{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.case-meta{color:var(--muted);font-size:11px;margin-top:3px}.case-side{text-align:right;min-width:74px}.pill{display:inline-flex;align-items:center;gap:5px;padding:5px 8px;border:1px solid var(--line);border-radius:99px;color:var(--muted);font-size:10px;font-weight:750}.pill.ok{color:var(--ok);background:rgba(80,190,130,.08)}.pill.warn{color:var(--warn);background:rgba(230,175,70,.08)}.pill.blue{color:var(--blue);background:rgba(100,150,240,.08)}.progress{height:5px;border-radius:8px;background:var(--panel2);overflow:hidden;margin-top:9px}.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),#89e8c5);border-radius:8px}.empty{padding:30px 18px;text-align:center;border:1px dashed var(--line);border-radius:18px;color:var(--muted)}.empty .emoji{font-size:28px;margin-bottom:8px}.empty b{display:block;color:var(--text);margin-bottom:5px}.filters{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}.field{display:grid;gap:6px;margin:12px 0}.field label{font-size:12px;color:var(--soft);font-weight:700}.input,select,textarea{width:100%;border:1px solid var(--line);background:var(--bg2);color:var(--text);border-radius:12px;padding:11px 12px;outline:none}.input:focus,select:focus,textarea:focus{border-color:var(--accent)}textarea{resize:vertical;min-height:94px}.field-note{font-size:11px;color:var(--muted)}.search{max-width:340px;position:relative;flex:1}.search input{padding-left:37px}.search:before{content:"⌕";position:absolute;left:13px;top:6px;font-size:23px;color:var(--muted)}.category-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}.category{padding:17px;text-align:left;cursor:pointer;color:var(--text);border:1px solid var(--line);border-radius:17px;background:var(--panel);transition:.18s}.category:hover{border-color:var(--accent);transform:translateY(-2px)}.category .cat-icon{font-size:25px}.category b{display:block;margin:10px 0 4px}.category small{color:var(--muted);line-height:1.4;display:block}.step{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}.step:last-child{border:0}.step input{accent-color:var(--accent);width:18px;height:18px;margin-top:2px;flex:0 0 auto}.step-content{flex:1}.step-content b{font-size:13px}.step-content p{margin:3px 0 0;color:var(--muted);font-size:12px}.step.done b{text-decoration:line-through;color:var(--muted)}.tool-card{padding:18px;display:flex;gap:13px;align-items:flex-start}.tool-icon{height:43px;width:43px;border-radius:14px;background:var(--panel2);display:grid;place-items:center;font-size:20px;flex:0 0 auto}.tool-card .btn{margin-top:12px}.notice{border:1px solid rgba(244,195,111,.24);background:rgba(244,195,111,.07);border-radius:14px;padding:13px 15px;color:var(--soft);font-size:12px;margin:15px 0}.notice strong{color:var(--warn)}.good-notice{border-color:rgba(98,213,203,.2);background:rgba(98,213,203,.06)}.good-notice strong{color:var(--accent2)}.bottom-nav{position:fixed;z-index:5;bottom:0;left:0;right:0;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(18px);border-top:1px solid var(--line);padding:8px max(10px,env(safe-area-inset-right)) calc(8px + env(safe-area-inset-bottom));display:flex;justify-content:center}.nav-inner{width:min(620px,100%);display:grid;grid-template-columns:repeat(5,1fr);gap:4px}.nav-item{border:0;background:transparent;color:var(--muted);padding:7px 4px;border-radius:13px;display:grid;gap:2px;justify-items:center;font-size:10px;font-weight:700}.nav-item span{font-size:19px;line-height:1.2}.nav-item.active{color:var(--accent);background:rgba(98,213,203,.09)}.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.62);z-index:10;display:none;align-items:flex-end;justify-content:center;padding:18px}.modal-backdrop.open{display:flex}.modal{width:min(620px,100%);max-height:92vh;overflow:auto;background:var(--panel);border:1px solid var(--line);border-radius:24px;padding:22px;box-shadow:0 30px 100px rgba(0,0,0,.5);animation:rise .2s ease}@keyframes rise{from{transform:translateY(20px);opacity:.5}to{transform:none;opacity:1}}.modal-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:15px}.modal-head h3{margin:0;font-size:21px}.close{border:0;background:var(--panel2);color:var(--muted);width:34px;height:34px;border-radius:11px;font-size:20px}.modal-actions{display:flex;justify-content:flex-end;gap:9px;flex-wrap:wrap;margin-top:18px}.toast{position:fixed;z-index:20;bottom:calc(var(--nav-h) + 16px + env(safe-area-inset-bottom));left:50%;transform:translate(-50%,15px);opacity:0;pointer-events:none;background:var(--text);color:var(--bg);padding:11px 16px;border-radius:12px;font-size:12px;font-weight:750;box-shadow:var(--shadow);transition:.2s;max-width:calc(100% - 30px);text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}.detail-head{display:flex;align-items:flex-start;gap:13px;margin:20px 0}.detail-head h2{margin:0;font-size:25px;letter-spacing:-.03em}.detail-head p{margin:5px 0;color:var(--muted);font-size:12px}.detail-actions{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}.two-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}.template-output{white-space:pre-wrap;background:var(--bg2);border:1px solid var(--line);padding:14px;border-radius:13px;color:var(--soft);font-size:13px;min-height:140px}.result{padding:15px;border:1px solid var(--line);border-radius:14px;background:var(--panel2);margin-top:12px}.result strong{display:block;margin-bottom:5px}.result p{margin:0;color:var(--muted);font-size:12px}.footer-note{font-size:11px;color:var(--muted);text-align:center;margin:28px 0 0}.hidden{display:none!important}.tagline{font-size:10px;color:var(--muted)}
+@media(max-width:760px){.app{padding:0 15px 105px}.topbar{height:70px}.view{padding-top:22px}.hero{padding:22px 19px;margin:20px 0}.stats{grid-template-columns:repeat(2,1fr);gap:9px}.stat{padding:14px}.stat strong{font-size:25px}.grid2{grid-template-columns:1fr}.quick-grid{grid-template-columns:repeat(2,1fr)}.category-grid{grid-template-columns:repeat(2,1fr)}.grid3{grid-template-columns:1fr 1fr}.section-head{align-items:center}.page-title{font-size:29px}}
+@media(max-width:420px){.brand-tag{display:none}.category-grid{grid-template-columns:1fr 1fr}.category{padding:13px}.case-side{min-width:62px}.case-row{padding:12px;gap:9px}.case-symbol{width:37px;height:37px;flex-basis:37px}.two-fields{grid-template-columns:1fr}.grid3{grid-template-columns:1fr}.hero-actions .btn{flex:1}}
 </style>
 </head>
 <body>
 <div class="app">
-  <header>
-    <div class="brand"><div class="logo">R</div><div><h1>RELAIS</h1><small>VOTRE CENTRE DE SOLUTIONS</small></div></div>
-    <div class="version">PROTOTYPE 0.1</div>
-  </header>
+ <header class="topbar">
+  <div class="brand"><div class="brand-mark">R</div><div><div class="brand-name">RELAIS</div><div class="brand-tag">MOINS DE COMPLICATIONS. PLUS DE SOLUTIONS.</div></div></div>
+  <div class="top-actions"><button class="icon-btn" id="themeBtn" aria-label="Changer le thème" title="Changer le thème">☼</button><button class="icon-btn" id="quickAdd" aria-label="Créer un dossier" title="Créer un dossier">＋</button><div class="avatar">R</div></div>
+ </header>
 
-  <main>
-    <section class="view active" id="view-home">
-      <div class="hero">
-        <div class="eyebrow">Votre quotidien, simplifié</div>
-        <h2>Un problème.<br>Un plan. Une solution.</h2>
-        <p>Centralisez vos démarches, transformez une situation compliquée en étapes claires et suivez chaque dossier jusqu'à sa résolution.</p>
-        <button class="primary" onclick="openNewCase()">＋ Créer un dossier</button>
-      </div>
+ <main>
+  <section class="view active" id="view-home">
+   <div class="eyebrow">VOTRE ESPACE PERSONNEL</div><h1 class="page-title">Faisons avancer les choses.</h1><p class="sub">Un endroit unique pour comprendre vos démarches, organiser les prochaines étapes et garder le fil.</p>
+   <div class="hero"><div class="eyebrow">VOTRE PROCHAINE ÉTAPE</div><h2 id="heroTitle">Un problème à résoudre ?<br>On le prend étape par étape.</h2><p id="heroText">Décrivez votre situation et RELAIS vous aide à organiser les actions utiles, sans vous perdre dans les démarches.</p><div class="hero-actions"><button class="btn primary" data-action="new-case">＋ Créer un dossier</button><button class="btn ghost" data-go="journeys">Explorer les parcours ↗</button></div></div>
+   <div class="stats"><div class="stat"><div class="stat-top">Dossiers actifs <span class="stat-icon">◫</span></div><strong id="statActive">0</strong><small>En cours de suivi</small></div><div class="stat"><div class="stat-top">Étapes terminées <span class="stat-icon">✓</span></div><strong id="statDone">0</strong><small>Sur l’ensemble des dossiers</small></div><div class="stat"><div class="stat-top">À venir <span class="stat-icon">◷</span></div><strong id="statUpcoming">0</strong><small>Échéances dans les 7 jours</small></div><div class="stat"><div class="stat-top">Résolus <span class="stat-icon">✦</span></div><strong id="statResolved">0</strong><small>Dossiers clôturés</small></div></div>
+   <div class="section-head"><div><h3>Accès rapides</h3><p>Choisissez ce dont vous avez besoin maintenant.</p></div></div>
+   <div class="quick-grid">
+    <button class="quick" data-go="journeys"><span>🧭</span><b>Trouver un parcours</b></button><button class="quick" data-action="new-case"><span>📁</span><b>Créer un dossier</b></button><button class="quick" data-go="tools"><span>🛠️</span><b>Outils pratiques</b></button><button class="quick" data-action="letter"><span>✉️</span><b>Préparer un courrier</b></button>
+   </div>
+   <div class="section-head"><div><h3>Vos dossiers en cours</h3><p>Reprenez là où vous en étiez.</p></div><button class="text-btn" data-go="cases">Tout voir →</button></div>
+   <div id="homeCases" class="case-list"></div>
+   <div class="section-head"><div><h3>À ne pas oublier</h3><p>Les prochaines échéances enregistrées.</p></div><button class="text-btn" data-go="cases">Voir les dossiers →</button></div><div id="homeDeadlines" class="case-list"></div>
+   <p class="footer-note">RELAIS est un outil d’organisation. Il ne remplace pas les conseils d’un professionnel ni les informations des organismes officiels.</p>
+  </section>
 
-      <div class="stats">
-        <div class="stat"><strong id="stat-open">0</strong><span>Dossiers actifs</span></div>
-        <div class="stat"><strong id="stat-done">0</strong><span>Résolus</span></div>
-        <div class="stat"><strong id="stat-steps">0</strong><span>Étapes restantes</span></div>
-      </div>
+  <section class="view" id="view-journeys">
+   <div class="eyebrow">GUIDE DE RÉSOLUTION</div><h1 class="page-title">Par où commencer ?</h1><p class="sub">Choisissez un domaine. RELAIS vous propose une première feuille de route à adapter à votre situation.</p>
+   <div class="notice good-notice"><strong>À savoir :</strong> les étapes sont des repères généraux. Vérifiez toujours les délais, conditions et pièces demandées auprès de l’organisme concerné.</div>
+   <div class="search"><input class="input" id="journeySearch" placeholder="Rechercher un sujet…" aria-label="Rechercher un parcours"></div>
+   <div class="category-grid" id="categoryGrid"></div>
+   <div class="section-head"><div><h3>Notre méthode</h3><p>Un parcours simple pour éviter de se disperser.</p></div></div>
+   <div class="grid3"><div class="card"><div class="tool-icon">①</div><h4>Comprendre</h4><p>Clarifier le problème, les faits et le résultat recherché.</p></div><div class="card"><div class="tool-icon">②</div><h4>Préparer</h4><p>Rassembler les informations et identifier le bon interlocuteur.</p></div><div class="card"><div class="tool-icon">③</div><h4>Agir et suivre</h4><p>Avancer, noter les réponses et suivre les échéances.</p></div></div>
+  </section>
 
-      <section class="section">
-        <div class="section-head"><h3>Vos outils</h3><span class="small muted">Accès rapide</span></div>
-        <div class="grid">
-          <button class="tile" onclick="openNewCase()"><div class="icon">✦</div><b>Résoudre un problème</b><p>Décrivez votre situation et obtenez un premier plan d'action.</p></button>
-          <button class="tile" onclick="showView('cases')"><div class="icon">▤</div><b>Mes dossiers</b><p>Retrouvez vos démarches et leur progression.</p></button>
-          <button class="tile" onclick="showView('deadlines')"><div class="icon">◷</div><b>Mes échéances</b><p>Repérez les dates importantes à ne pas oublier.</p></button>
-          <button class="tile" onclick="showView('documents')"><div class="icon">▧</div><b>Mes documents</b><p>Préparez une liste des pièces utiles à chaque dossier.</p></button>
-          <button class="tile" onclick="showView('safety')"><div class="icon">◇</div><b>Vérifier un message</b><p>Une méthode simple pour examiner un message suspect.</p></button>
-          <button class="tile" onclick="showView('settings')"><div class="icon">⚙</div><b>Paramètres & données</b><p>Exportez ou effacez les données enregistrées sur cet appareil.</p></button>
-        </div>
-      </section>
+  <section class="view" id="view-cases">
+   <div class="eyebrow">SUIVI PERSONNEL</div><h1 class="page-title">Vos dossiers.</h1><p class="sub">Gardez une trace de vos actions, des réponses reçues et des prochaines étapes.</p>
+   <div class="filters"><div class="search"><input class="input" id="caseSearch" placeholder="Rechercher un dossier…" aria-label="Rechercher un dossier"></div><select id="caseFilter" class="input" style="max-width:170px"><option value="all">Tous les dossiers</option><option value="active">En cours</option><option value="resolved">Résolus</option></select><button class="btn primary" data-action="new-case">＋ Nouveau</button></div>
+   <div id="caseList" class="case-list"></div>
+   <div class="section-head"><div><h3>Calendrier des échéances</h3><p>Les dates que vous avez ajoutées à vos dossiers.</p></div></div><div id="deadlineList" class="case-list"></div>
+  </section>
 
-      <section class="section">
-        <div class="section-head"><h3>À reprendre</h3><button class="quiet small" onclick="showView('cases')">Tout voir →</button></div>
-        <div id="home-cases"></div>
-      </section>
-      <div class="notice section">RELAIS est actuellement un prototype local. Il ne transmet pas vos informations à un service externe et ne remplace pas les conseils d'un professionnel ou les informations des organismes officiels.</div>
-    </section>
+  <section class="view" id="view-tools">
+   <div class="eyebrow">BOÎTE À OUTILS</div><h1 class="page-title">Les bons outils, au bon moment.</h1><p class="sub">Des aides simples pour préparer, vérifier et organiser vos démarches.</p>
+   <div class="grid2" style="margin-top:20px">
+    <div class="card tool-card"><div class="tool-icon">✉️</div><div><h3>Préparer un courrier</h3><p>Créez un brouillon clair à personnaliser avant de l’envoyer.</p><button class="btn small" data-action="letter">Ouvrir l’outil →</button></div></div>
+    <div class="card tool-card"><div class="tool-icon">📋</div><div><h3>Liste de documents</h3><p>Préparez une liste indicative selon le type de démarche.</p><button class="btn small" data-action="documents">Voir la liste →</button></div></div>
+    <div class="card tool-card"><div class="tool-icon">🛡️</div><div><h3>Vigilance face aux messages</h3><p>Repérez quelques signaux d’alerte dans un SMS ou un e-mail.</p><button class="btn small" data-action="scam">Analyser un message →</button></div></div>
+    <div class="card tool-card"><div class="tool-icon">🗓️</div><div><h3>Calculer une échéance</h3><p>Comptez des jours à partir d’une date et ajoutez un rappel à un dossier.</p><button class="btn small" data-action="datecalc">Ouvrir le calculateur →</button></div></div>
+   </div>
+   <div class="section-head"><div><h3>Organismes et ressources utiles</h3><p>Accédez directement aux sites de référence.</p></div></div>
+   <div class="grid2">
+    <div class="card"><h3>🇫🇷 Service-Public.fr</h3><p>Informations administratives officielles, fiches pratiques et démarches.</p><p><a href="https://www.service-public.fr/" target="_blank" rel="noopener">Ouvrir Service-Public ↗</a></p></div>
+    <div class="card"><h3>🔐 Cybermalveillance.gouv.fr</h3><p>Conseils et assistance face aux arnaques et problèmes numériques.</p><p><a href="https://www.cybermalveillance.gouv.fr/" target="_blank" rel="noopener">Ouvrir le site ↗</a></p></div>
+    <div class="card"><h3>🛒 SignalConso</h3><p>Signaler un problème rencontré avec une entreprise ou un commerçant.</p><p><a href="https://signal.conso.gouv.fr/" target="_blank" rel="noopener">Ouvrir SignalConso ↗</a></p></div>
+    <div class="card"><h3>🧭 France Services</h3><p>Trouver un accompagnement de proximité pour les démarches administratives.</p><p><a href="https://www.france-services.gouv.fr/" target="_blank" rel="noopener">Trouver un espace ↗</a></p></div>
+   </div>
+   <div class="notice"><strong>Attention aux faux sites :</strong> vérifiez l’adresse du site, ne communiquez jamais un mot de passe ou un code de validation dans un message et passez par les sites officiels saisis vous-même.</div>
+  </section>
 
-    <section class="view" id="view-cases">
-      <div class="section-head"><div><div class="eyebrow">Espace personnel</div><h2 class="page-title">Mes dossiers</h2></div><button class="primary" onclick="openNewCase()">＋ Nouveau</button></div>
-      <p class="small muted">Un dossier par situation : logement, études, travail, consommation, démarches et plus encore.</p>
-      <div id="case-list"></div>
-    </section>
+  <section class="view" id="view-profile">
+   <div class="eyebrow">CONFIGURATION</div><h1 class="page-title">Votre RELAIS.</h1><p class="sub">Gérez l’apparence et gardez la maîtrise de vos informations.</p>
+   <div class="card" style="margin-top:20px"><h3>Apparence</h3><p>Choisissez le thème qui vous convient.</p><div class="filters"><button class="btn" id="darkTheme">🌙 Sombre</button><button class="btn" id="lightTheme">☀️ Clair</button></div></div>
+   <div class="card" style="margin-top:13px"><h3>Vos données</h3><p>Vos dossiers sont enregistrés localement dans le navigateur de cet appareil. Ils ne sont pas envoyés à un serveur par cette version.</p><div class="filters"><button class="btn primary" id="exportBtn">↧ Exporter une sauvegarde</button><button class="btn" id="importBtn">↥ Importer une sauvegarde</button><input type="file" id="importFile" accept="application/json,.json" class="hidden"></div><div class="notice"><strong>Confidentialité :</strong> n’enregistrez pas ici de mots de passe, numéros de carte, identifiants, documents médicaux ou pièces d’identité. Utilisez des intitulés généraux et conservez les documents sensibles dans un espace sécurisé adapté.</div><button class="btn danger small" id="resetBtn">Réinitialiser toutes les données</button></div>
+   <div class="card" style="margin-top:13px"><h3>À propos de RELAIS</h3><p><b>Version 1.0 — Prototype local</b><br>RELAIS aide à structurer des démarches quotidiennes, à suivre les étapes et à préparer des brouillons. Il ne se connecte pas aux administrations, ne vérifie pas automatiquement les droits et ne transmet aucun formulaire.</p><p class="tagline">Moins de complications. Plus de solutions.</p></div>
+  </section>
 
-    <section class="view" id="view-deadlines">
-      <div class="eyebrow">Garder le fil</div><h2 class="page-title">Mes échéances</h2>
-      <p class="small muted">Les dates associées à vos dossiers apparaissent ici.</p>
-      <div id="deadline-list"></div>
-    </section>
-
-    <section class="view" id="view-documents">
-      <div class="eyebrow">Préparer sans éparpiller</div><h2 class="page-title">Mes documents</h2>
-      <p class="small muted">RELAIS vous aide à repérer les pièces à réunir. Cette version ne stocke pas encore de fichiers personnels.</p>
-      <div class="card">
-        <h3>Liste de pièces à préparer</h3>
-        <p class="small muted">Ajoutez une pièce à votre liste générale, puis cochez-la lorsqu'elle est prête.</p>
-        <div class="row" style="margin-top:13px"><input id="doc-input" class="field" placeholder="Ex. : justificatif de domicile"><button class="secondary" onclick="addDoc()">Ajouter</button></div>
-        <div id="doc-list"></div>
-      </div>
-      <div class="notice section">Conseil : ne déposez pas ici de pièce d'identité, de document bancaire ou de donnée médicale. Le stockage sécurisé des fichiers sera conçu dans une étape ultérieure.</div>
-    </section>
-
-    <section class="view" id="view-safety">
-      <div class="eyebrow">Prudence numérique</div><h2 class="page-title">Vérifier un message</h2>
-      <p class="small muted">Une checklist pour prendre du recul avant de répondre à un message inattendu.</p>
-      <div class="card">
-        <label for="suspicious">Collez éventuellement le texte du message (sans données personnelles)</label>
-        <textarea id="suspicious" class="field" placeholder="Ne saisissez ni mot de passe, ni code, ni numéro de carte…"></textarea>
-        <div class="form-actions"><button class="primary" onclick="checkMessage()">Afficher ma checklist</button><button class="quiet" onclick="document.getElementById('suspicious').value=''">Effacer</button></div>
-        <div id="safety-result"></div>
-      </div>
-      <div class="notice section">Cette checklist ne détecte pas automatiquement les fraudes et ne garantit pas qu'un message est authentique. Vérifiez toujours par un canal indépendant, depuis le site ou le numéro officiel que vous recherchez vous-même.</div>
-    </section>
-
-    <section class="view" id="view-settings">
-      <div class="eyebrow">Contrôle de vos informations</div><h2 class="page-title">Paramètres & données</h2>
-      <div class="card">
-        <h3>Stockage local</h3>
-        <p class="small muted">Les dossiers et listes de ce prototype sont enregistrés dans le stockage local de ce navigateur sur cet appareil.</p>
-        <div class="form-actions"><button class="secondary" onclick="exportData()">Exporter mes données</button><button class="secondary" onclick="importPicker()">Importer une sauvegarde</button><input type="file" id="import-file" accept="application/json,.json" hidden onchange="importData(event)"></div>
-      </div>
-      <div class="card">
-        <h3>Réinitialiser le prototype</h3>
-        <p class="small muted">Cette action efface les dossiers et listes conservés dans ce navigateur. Exportez une sauvegarde avant, si nécessaire.</p>
-        <button class="danger-btn" style="margin-top:12px" onclick="resetData()">Effacer les données locales</button>
-      </div>
-      <div class="notice section">Pas de compte, de synchronisation cloud ni de connexion à l'administration dans cette version. Évitez d'y enregistrer des informations confidentielles.</div>
-    </section>
-  </main>
-  <footer>RELAIS · Moins de complications. Plus de solutions.</footer>
+  <section class="view" id="view-detail"><div id="detailContent"></div></section>
+ </main>
 </div>
-
-<div class="bar"><nav class="nav" aria-label="Navigation principale">
-  <button class="active" data-view="home" onclick="showView('home')"><span>⌂</span>Accueil</button>
-  <button data-view="cases" onclick="showView('cases')"><span>▤</span>Dossiers</button>
-  <button data-view="deadlines" onclick="showView('deadlines')"><span>◷</span>Dates</button>
-  <button data-view="documents" onclick="showView('documents')"><span>▧</span>Pièces</button>
-  <button data-view="settings" onclick="showView('settings')"><span>⚙</span>Réglages</button>
-</nav></div>
-
-<div class="modal" id="case-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" onclick="if(event.target===this)closeModal()">
-  <div class="sheet">
-    <div class="sheet-head"><h3 id="modal-title">Créer un dossier</h3><button class="close" onclick="closeModal()" aria-label="Fermer">✕</button></div>
-    <form id="case-form" onsubmit="saveCase(event)">
-      <label for="case-title">De quoi s'agit-il ?</label>
-      <input id="case-title" class="field" maxlength="90" required placeholder="Ex. : préparer mon déménagement">
-      <label for="case-category">Catégorie</label>
-      <select id="case-category" class="field">
-        <option>Administration</option><option>Logement</option><option>Études et travail</option><option>Budget et factures</option><option>Consommation</option><option>Famille et organisation</option><option>Santé administrative</option><option>Autre</option>
-      </select>
-      <label for="case-description">Expliquez la situation</label>
-      <textarea id="case-description" class="field" maxlength="1200" placeholder="Que s'est-il passé ? Qu'aimeriez-vous obtenir ? N'indiquez pas de données confidentielles."></textarea>
-      <label for="case-date">Date importante (facultatif)</label>
-      <input id="case-date" class="field" type="date">
-      <div class="form-actions"><button type="submit" class="primary">Créer mon dossier</button><button type="button" class="quiet" onclick="closeModal()">Annuler</button></div>
-    </form>
-  </div>
-</div>
-
-<div class="modal" id="detail-modal" role="dialog" aria-modal="true" aria-labelledby="detail-title" onclick="if(event.target===this)closeDetail()">
-  <div class="sheet">
-    <div class="sheet-head"><h3 id="detail-title">Détail du dossier</h3><button class="close" onclick="closeDetail()" aria-label="Fermer">✕</button></div>
-    <div id="detail-content"></div>
-  </div>
-</div>
-
+<nav class="bottom-nav" aria-label="Navigation principale"><div class="nav-inner"><button class="nav-item active" data-tab="home"><span>⌂</span>Accueil</button><button class="nav-item" data-tab="journeys"><span>◎</span>Parcours</button><button class="nav-item" data-tab="cases"><span>▤</span>Dossiers</button><button class="nav-item" data-tab="tools"><span>✧</span>Outils</button><button class="nav-item" data-tab="profile"><span>⚙</span>Réglages</button></div></nav>
+<div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal"><div class="modal-head"><h3 id="modalTitle">Nouveau</h3><button class="close" id="modalClose" aria-label="Fermer">×</button></div><div id="modalBody"></div></div></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script>
-"use strict";
-const STORAGE_KEY = "relais.prototype.v01";
-let data = {cases:[], docs:[]};
-let currentDetail = null;
-
-const templates = {
-  "Administration":[
-    ["Identifier l'organisme concerné","Repérez le service compétent et consultez son site officiel."],
-    ["Vérifier les conditions et délais","Lisez les critères, les justificatifs demandés et la date limite."],
-    ["Réunir les pièces nécessaires","Préparez une liste des documents à fournir."],
-    ["Préparer puis envoyer la demande","Relisez les informations et utilisez le canal officiel."],
-    ["Conserver une preuve et suivre la réponse","Notez la date d'envoi et la référence du dossier."]
-  ],
-  "Logement":[
-    ["Clarifier le besoin et l'urgence","Notez le problème, les dates et le résultat attendu."],
-    ["Rassembler les éléments utiles","Contrat, échanges, photos ou factures selon la situation."],
-    ["Contacter le bon interlocuteur","Vérifiez les coordonnées depuis une source officielle."],
-    ["Formaliser la demande par écrit","Gardez une copie datée de vos échanges."],
-    ["Suivre la réponse et les suites","Ajoutez les échéances et relances utiles."]
-  ],
-  "Études et travail":[
-    ["Définir l'objectif","Précisez la formation, le poste ou la démarche visée."],
-    ["Identifier les critères et dates","Consultez les informations de l'établissement ou de l'employeur."],
-    ["Préparer les éléments du dossier","CV, lettre, pièces et références nécessaires."],
-    ["Envoyer la candidature ou demande","Vérifiez chaque information avant l'envoi."],
-    ["Suivre les réponses","Notez les échanges, rendez-vous et prochaines étapes."]
-  ],
-  "Budget et factures":[
-    ["Identifier la facture ou dépense","Vérifiez le montant, la période et le fournisseur."],
-    ["Contrôler les informations","Comparez avec le contrat et les relevés disponibles."],
-    ["Contacter le service concerné","Utilisez les coordonnées du site officiel."],
-    ["Conserver les justificatifs","Archivez les échanges et références utiles."],
-    ["Vérifier la régularisation","Suivez la réponse et la date prévue."]
-  ],
-  "Consommation":[
-    ["Rassembler la preuve d'achat","Retrouvez facture, commande et échanges."],
-    ["Vérifier les garanties et conditions","Consultez les informations officielles du vendeur ou fabricant."],
-    ["Décrire clairement le problème","Exposez les faits, dates et solution souhaitée."],
-    ["Envoyer une demande au vendeur","Conservez une copie et une preuve d'envoi."],
-    ["Suivre la réponse ou le recours","Notez les délais et les suites possibles."]
-  ],
-  "Famille et organisation":[
-    ["Lister les besoins et personnes concernées","Définissez ce qui doit être organisé et par qui."],
-    ["Rassembler les informations utiles","Centralisez les dates et éléments nécessaires."],
-    ["Répartir les actions","Attribuez chaque tâche à la bonne personne."],
-    ["Confirmer les prochaines étapes","Vérifiez que chacun dispose des informations nécessaires."],
-    ["Faire le point","Mettez à jour ce qui est terminé ou reste à faire."]
-  ],
-  "Santé administrative":[
-    ["Identifier la démarche administrative","Précisez s'il s'agit d'un rendez-vous, document ou remboursement."],
-    ["Vérifier les consignes de l'organisme","Consultez directement les informations officielles."],
-    ["Préparer les justificatifs requis","Ne stockez pas de données médicales sensibles dans ce prototype."],
-    ["Effectuer la démarche par le canal officiel","Vérifiez l'adresse ou le portail avant tout envoi."],
-    ["Suivre la confirmation","Conservez la référence utile dans un espace sécurisé adapté."]
-  ],
-  "Autre":[
-    ["Décrire précisément la situation","Séparez les faits, les difficultés et le résultat attendu."],
-    ["Identifier les personnes ou services concernés","Recherchez leurs coordonnées et informations officielles."],
-    ["Lister les informations et pièces utiles","Ne partagez que les éléments strictement nécessaires."],
-    ["Choisir la prochaine action concrète","Définissez une action simple et vérifiable."],
-    ["Suivre le résultat","Ajoutez les réponses, dates et actions restantes."]
-  ]
+(()=>{
+'use strict';
+const KEY='relais.v1.data';
+const CATEGORIES={
+ admin:{label:'Administration',icon:'🏛️',desc:'Papiers, démarches et demandes administratives.',steps:[['Définir la demande','Notez précisément ce que vous souhaitez obtenir ou régulariser.'],['Identifier le bon organisme','Vérifiez quel service est compétent sur son site officiel.'],['Vérifier les conditions et délais','Consultez les règles à jour et les éventuelles dates limites.'],['Préparer les éléments utiles','Rassemblez uniquement les pièces demandées par l’organisme.'],['Effectuer la démarche','Utilisez le canal officiel et conservez une preuve de dépôt.'],['Suivre la réponse','Notez la date de relance éventuelle et les suites à donner.']],docs:['Référence ou numéro de dossier si déjà existant','Coordonnées de contact utiles','Justificatifs expressément demandés par l’organisme','Copie de la demande et preuve de dépôt']},
+ housing:{label:'Logement',icon:'🏠',desc:'Location, voisinage, entretien et logement.',steps:[['Décrire le problème','Notez les faits, les dates et ce que vous avez déjà tenté.'],['Relire les documents concernés','Vérifiez le bail, les échanges et les clauses pertinentes.'],['Identifier le bon interlocuteur','Selon le sujet : bailleur, agence, syndic ou service compétent.'],['Conserver des éléments factuels','Gardez les échanges et les constats utiles sans diffuser de données privées.'],['Formuler une demande claire','Expliquez le problème, le résultat attendu et un délai raisonnable.'],['Suivre la réponse','Consignez les réponses et renseignez-vous sur les recours adaptés.']],docs:['Copie du document concerné si nécessaire','Dates et description factuelle du problème','Échanges déjà effectués','Éléments justificatifs utiles demandés']},
+ work:{label:'Études et travail',icon:'🎓',desc:'Établissement, stage, emploi et organisation.',steps:[['Clarifier l’objectif','Définissez ce qui doit changer ou être obtenu.'],['Repérer le bon contact','Identifiez le secrétariat, référent, responsable ou service RH.'],['Vérifier les règles applicables','Consultez les consignes, règlement ou contrat concerné.'],['Préparer les informations','Réunissez dates, références et éléments strictement utiles.'],['Faire la demande','Choisissez un canal adapté et gardez une copie.'],['Faire le point','Suivez la réponse et les prochaines échéances.']],docs:['Dates et références utiles','Consignes ou document applicable','Échanges précédents','Éléments justificatifs demandés']},
+ money:{label:'Budget et factures',icon:'💶',desc:'Facturation, paiement, budget et échéanciers.',steps:[['Vérifier les montants','Comparez la facture avec le contrat, devis ou relevé.'],['Repérer la date importante','Notez la date limite et vérifiez les modalités de contestation.'],['Contacter le service concerné','Utilisez les coordonnées figurant sur le site officiel.'],['Expliquer la situation','Exposez les faits et demandez une réponse précise.'],['Conserver les justificatifs','Gardez factures, échanges et preuves de paiement si utiles.'],['Suivre la résolution','Notez l’accord, l’échéancier ou les suites annoncées.']],docs:['Facture ou référence concernée','Contrat ou devis si pertinent','Historique des échanges','Preuve utile liée au montant contesté']},
+ consumer:{label:'Consommation',icon:'🛍️',desc:'Achat, livraison, garantie et réclamation.',steps:[['Rassembler les faits','Notez la date d’achat, le problème et le résultat attendu.'],['Vérifier les conditions de vente','Consultez les informations du vendeur et les garanties annoncées.'],['Contacter le vendeur','Adressez une demande claire via un canal traçable.'],['Garder les preuves','Conservez confirmation, facture et échanges utiles.'],['Utiliser une médiation ou un signalement si adapté','Vérifiez les voies officielles correspondant à votre situation.'],['Suivre la réponse','Notez les engagements et les délais annoncés.']],docs:['Confirmation de commande ou ticket','Description du problème','Échanges avec le vendeur','Référence de commande si nécessaire']},
+ family:{label:'Famille et organisation',icon:'🤝',desc:'Organisation personnelle et coordination.',steps:[['Lister ce qui doit être fait','Transformez la situation en tâches simples et concrètes.'],['Identifier les personnes concernées','Déterminez qui doit être informé ou participer.'],['Fixer les priorités','Repérez ce qui est urgent et ce qui peut attendre.'],['Répartir les actions','Attribuez une action claire à chaque personne concernée.'],['Noter les dates utiles','Ajoutez les rendez-vous et échéances importantes.'],['Faire un point régulier','Mettez à jour ce qui est fait et ce qui reste à faire.']],docs:['Liste des tâches','Coordonnées utiles','Dates et rendez-vous','Notes de suivi non sensibles']},
+ health:{label:'Santé administrative',icon:'🩺',desc:'Rendez-vous, remboursements et démarches non médicales.',steps:[['Définir la question administrative','Distinguez la démarche administrative d’une question médicale.'],['Identifier le bon organisme','Vérifiez le service concerné via son site officiel.'],['Consulter les consignes officielles','Vérifiez les justificatifs et modalités à jour.'],['Préparer les éléments demandés','Évitez de recopier ici des informations médicales ou sensibles.'],['Effectuer la démarche en sécurité','Passez par l’espace officiel ou le canal indiqué.'],['Suivre la demande','Notez la référence et la date de suivi sans données sensibles.']],docs:['Référence administrative si nécessaire','Coordonnées de l’organisme','Justificatifs explicitement demandés','Preuve de démarche — sans stocker de document sensible ici']},
+ digital:{label:'Numérique et sécurité',icon:'🔐',desc:'Comptes, messages suspects et sécurité en ligne.',steps:[['Faire le point sans partager de secret','Ne notez aucun mot de passe, code ou donnée bancaire dans RELAIS.'],['Vérifier par un canal indépendant','Ouvrez vous-même le site ou l’application officielle.'],['Sécuriser le compte concerné','Suivez les consignes de sécurité publiées par le fournisseur.'],['Conserver les éléments utiles','Gardez les références de signalement, sans republier de données privées.'],['Signaler si nécessaire','Consultez les plateformes officielles adaptées à la situation.'],['Vérifier les suites','Surveillez les notifications officielles et les réponses reçues.']],docs:['Date et type d’incident','Nom du service concerné','Référence de signalement si disponible','Aucun mot de passe ou code de validation']},
+ other:{label:'Autre situation',icon:'🧩',desc:'Organisez une situation qui ne rentre pas dans les autres catégories.',steps:[['Décrire la situation','Résumez les faits avec des mots simples.'],['Définir le résultat attendu','Écrivez ce qui constituerait une résolution satisfaisante.'],['Trouver une source fiable','Cherchez l’organisme ou la personne compétente.'],['Lister les informations utiles','Notez ce qui manque pour agir.'],['Faire une première action','Choisissez une démarche simple, vérifiable et sans risque.'],['Faire le suivi','Ajoutez les réponses et prochaines dates importantes.']],docs:['Résumé de la situation','Coordonnées ou références utiles','Éléments demandés par l’interlocuteur','Historique des actions']}
 };
-
-function persist(){
-  try{localStorage.setItem(STORAGE_KEY,JSON.stringify(data));}
-  catch(e){alert("Enregistrement impossible dans ce navigateur. Exportez régulièrement vos données.");}
-}
-function load(){
-  try{
-    const saved=JSON.parse(localStorage.getItem(STORAGE_KEY)||"null");
-    if(saved&&Array.isArray(saved.cases)&&Array.isArray(saved.docs))data=saved;
-  }catch(e){data={cases:[],docs:[]};}
-}
-function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,7);}
-function safe(text){return String(text??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
-function dateText(date){
-  if(!date)return "Aucune date";
-  const d=new Date(date+"T12:00:00");
-  return Number.isNaN(d.getTime())?date:new Intl.DateTimeFormat("fr-FR",{day:"numeric",month:"short",year:"numeric"}).format(d);
-}
-function showView(name){
-  document.querySelectorAll(".view").forEach(v=>v.classList.toggle("active",v.id==="view-"+name));
-  document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.view===name));
-  if(name==="home")renderHome();
-  if(name==="cases")renderCases();
-  if(name==="deadlines")renderDeadlines();
-  if(name==="documents")renderDocs();
-  window.scrollTo({top:0,behavior:"smooth"});
-}
-function openNewCase(){
-  document.getElementById("case-form").reset();
-  document.getElementById("case-modal").classList.add("open");
-  setTimeout(()=>document.getElementById("case-title").focus(),80);
-}
-function closeModal(){document.getElementById("case-modal").classList.remove("open");}
-function saveCase(event){
-  event.preventDefault();
-  const title=document.getElementById("case-title").value.trim();
-  if(!title)return;
-  const category=document.getElementById("case-category").value;
-  const desc=document.getElementById("case-description").value.trim();
-  const due=document.getElementById("case-date").value;
-  const caseItem={
-    id:uid(),title,category,description:desc,due,status:"Actif",
-    created:new Date().toISOString(),
-    steps:(templates[category]||templates.Autre).map((s,i)=>({id:uid(),title:s[0],hint:s[1],done:false}))
-  };
-  data.cases.unshift(caseItem);persist();closeModal();showView("cases");openDetail(caseItem.id);
-}
-function getCase(id){return data.cases.find(c=>c.id===id);}
-function progress(c){return c.steps.length?Math.round(c.steps.filter(s=>s.done).length/c.steps.length*100):0;}
-function caseCard(c,compact=false){
-  const pct=progress(c),done=c.status==="Résolu";
-  return `<article class="case">
-    <div class="case-top"><div><h4>${safe(c.title)}</h4><p>${safe(c.category)}${c.description?" · "+safe(c.description.slice(0,105))+(c.description.length>105?"…":""):""}</p></div><span class="tag ${done?"done":""}">${done?"Résolu":"En cours"}</span></div>
-    <div class="case-meta"><span>${pct}% accompli</span><span>${c.due?"Échéance : "+safe(dateText(c.due)):"Sans échéance"}</span></div>
-    <div class="progress"><span style="width:${pct}%"></span></div>
-    ${compact?"":`<div class="case-actions"><button class="secondary" onclick="openDetail('${c.id}')">Ouvrir le dossier</button>${done?`<button class="quiet" onclick="reopenCase('${c.id}')">Réactiver</button>`:`<button class="quiet" onclick="markResolved('${c.id}')">Marquer résolu</button>`}</div>`}
-    ${compact?`<div class="case-actions"><button class="secondary" onclick="openDetail('${c.id}')">Continuer →</button></div>`:""}
-  </article>`;
-}
-function renderHome(){
-  const active=data.cases.filter(c=>c.status!=="Résolu");
-  const done=data.cases.filter(c=>c.status==="Résolu");
-  const remaining=active.reduce((n,c)=>n+c.steps.filter(s=>!s.done).length,0);
-  document.getElementById("stat-open").textContent=active.length;
-  document.getElementById("stat-done").textContent=done.length;
-  document.getElementById("stat-steps").textContent=remaining;
-  document.getElementById("home-cases").innerHTML=active.length?active.slice(0,2).map(c=>caseCard(c,true)).join(""):`<div class="empty">Aucun dossier pour le moment.<br>Créez votre premier dossier pour commencer.</div>`;
-}
-function renderCases(){
-  const list=document.getElementById("case-list");
-  list.innerHTML=data.cases.length?data.cases.map(c=>caseCard(c)).join(""):`<div class="empty">Vous n'avez pas encore créé de dossier.</div>`;
-}
-function renderDeadlines(){
-  const items=data.cases.filter(c=>c.due&&c.status!=="Résolu").sort((a,b)=>a.due.localeCompare(b.due));
-  document.getElementById("deadline-list").innerHTML=items.length?items.map(c=>`<article class="case"><div class="case-top"><div><h4>${safe(c.title)}</h4><p>${safe(c.category)}</p></div><span class="tag">${safe(dateText(c.due))}</span></div><div class="case-actions"><button class="secondary" onclick="openDetail('${c.id}')">Ouvrir le dossier</button></div></article>`).join(""):`<div class="empty">Aucune échéance enregistrée.<br>Ajoutez une date à la création d'un dossier.</div>`;
-}
-function addDoc(){
-  const input=document.getElementById("doc-input"),name=input.value.trim();
-  if(!name)return;
-  data.docs.push({id:uid(),name,done:false});input.value="";persist();renderDocs();
-}
-function toggleDoc(id){
-  const d=data.docs.find(x=>x.id===id);if(!d)return;d.done=!d.done;persist();renderDocs();
-}
-function removeDoc(id){data.docs=data.docs.filter(x=>x.id!==id);persist();renderDocs();}
-function renderDocs(){
-  const el=document.getElementById("doc-list");
-  el.innerHTML=data.docs.length?`<ul class="steps">${data.docs.map(d=>`<li><input class="check" type="checkbox" ${d.done?"checked":""} onchange="toggleDoc('${d.id}')"><div class="step-copy"><b style="${d.done?"text-decoration:line-through;color:var(--muted)":""}">${safe(d.name)}</b></div><button class="quiet" onclick="removeDoc('${d.id}')" aria-label="Supprimer">✕</button></li>`).join("")}</ul>`:`<div class="empty" style="margin-top:12px">Votre liste est vide.</div>`;
-}
-function openDetail(id){
-  const c=getCase(id);if(!c)return;currentDetail=id;
-  document.getElementById("detail-title").textContent=c.title;
-  const pct=progress(c);
-  document.getElementById("detail-content").innerHTML=`
-    <p class="small muted">${safe(c.category)} · Créé le ${safe(dateText(c.created.slice(0,10)))}</p>
-    ${c.description?`<div class="notice">${safe(c.description)}</div>`:""}
-    <div class="case-meta"><span>${pct}% accompli</span><span>${c.due?"Échéance : "+safe(dateText(c.due)):"Aucune échéance"}</span><span>${c.status}</span></div>
-    <div class="progress"><span style="width:${pct}%"></span></div>
-    <div class="divider"></div><h4>Plan d'action suggéré</h4>
-    <p class="small muted">Ces étapes sont des pistes générales à adapter à votre situation. Vérifiez toujours les consignes officielles.</p>
-    <ul class="steps">${c.steps.map(s=>`<li><input class="check" type="checkbox" ${s.done?"checked":""} onchange="toggleStep('${c.id}','${s.id}')"><div class="step-copy"><b>${safe(s.title)}</b><small>${safe(s.hint)}</small></div></li>`).join("")}</ul>
-    <div class="form-actions">${c.status==="Résolu"?`<button class="secondary" onclick="reopenCase('${c.id}');openDetail('${c.id}')">Réactiver le dossier</button>`:`<button class="primary" onclick="markResolved('${c.id}');openDetail('${c.id}')">Marquer comme résolu</button>`}<button class="quiet" onclick="editDue('${c.id}')">Modifier l'échéance</button><button class="danger-btn" onclick="deleteCase('${c.id}')">Supprimer</button></div>`;
-  document.getElementById("detail-modal").classList.add("open");
-}
-function closeDetail(){document.getElementById("detail-modal").classList.remove("open");currentDetail=null;}
-function toggleStep(caseId,stepId){
-  const c=getCase(caseId);if(!c)return;const s=c.steps.find(x=>x.id===stepId);if(!s)return;s.done=!s.done;
-  if(c.steps.every(x=>x.done))c.status="Résolu";else c.status="Actif";
-  persist();openDetail(caseId);refreshViews();
-}
-function markResolved(id){const c=getCase(id);if(!c)return;c.status="Résolu";persist();refreshViews();if(!document.getElementById("detail-modal").classList.contains("open"))renderCases();}
-function reopenCase(id){const c=getCase(id);if(!c)return;c.status="Actif";persist();refreshViews();renderCases();}
-function editDue(id){
-  const c=getCase(id);if(!c)return;
-  const value=prompt("Nouvelle date au format AAAA-MM-JJ (laisser vide pour retirer l'échéance) :",c.due||"");
-  if(value===null)return;
-  if(value&&!/^\d{4}-\d{2}-\d{2}$/.test(value)){alert("Format de date invalide.");return;}
-  c.due=value;persist();openDetail(id);refreshViews();
-}
-function deleteCase(id){
-  if(!confirm("Supprimer définitivement ce dossier de ce navigateur ?"))return;
-  data.cases=data.cases.filter(c=>c.id!==id);persist();closeDetail();refreshViews();
-}
-function refreshViews(){renderHome();renderCases();renderDeadlines();}
-function checkMessage(){
-  const text=document.getElementById("suspicious").value.trim();
-  const flags=[
-    ["Lien ou pièce jointe inattendu","N'ouvrez pas le lien depuis le message. Accédez au service en saisissant vous-même son adresse."],
-    ["Demande urgente ou menaçante","Méfiez-vous des délais très courts, menaces ou promesses inhabituelles."],
-    ["Demande de secret ou de paiement","Ne communiquez jamais mot de passe, code de validation ou coordonnées bancaires en réponse."],
-    ["Identité de l'expéditeur","Vérifiez l'adresse exacte et contactez l'organisme par un canal indépendant."],
-    ["Contexte inattendu","Demandez-vous si vous attendiez réellement ce message ou cette démarche."]
-  ];
-  const detected=[];
-  if(/https?:\/\/|www\./i.test(text))detected.push("Le texte semble contenir un lien.");
-  if(/urgent|immédiat|immédiatement|dernier rappel|suspendu|bloqué|amende|sanction/i.test(text))detected.push("Le texte contient des termes de pression ou d'urgence.");
-  if(/mot de passe|code|carte bancaire|coordonnées bancaires|virement|payer|paiement/i.test(text))detected.push("Le texte semble évoquer des informations sensibles ou un paiement.");
-  const el=document.getElementById("safety-result");
-  el.innerHTML=`<div class="divider"></div><h3>Votre checklist</h3>${detected.length?`<p class="small" style="color:var(--danger)">${detected.map(safe).join("<br>")}</p>`:`<p class="small muted">Aucun signal simple repéré automatiquement. Cela ne prouve pas que le message est fiable.</p>`}<ul class="steps">${flags.map(f=>`<li><div class="stepn">✓</div><div class="step-copy"><b>${f[0]}</b><small>${f[1]}</small></div></li>`).join("")}</ul>`;
-}
-function exportData(){
-  const blob=new Blob([JSON.stringify({format:"RELAIS-0.1",exportedAt:new Date().toISOString(),data},null,2)],{type:"application/json"});
-  const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="relais-sauvegarde.json";a.click();URL.revokeObjectURL(url);
-}
-function importPicker(){document.getElementById("import-file").click();}
-function importData(event){
-  const file=event.target.files&&event.target.files[0];if(!file)return;
-  const reader=new FileReader();
-  reader.onload=()=>{
-    try{
-      const parsed=JSON.parse(reader.result),incoming=parsed.data||parsed;
-      if(!Array.isArray(incoming.cases)||!Array.isArray(incoming.docs))throw new Error("format");
-      if(!confirm("Importer cette sauvegarde et remplacer les données actuelles ?"))return;
-      data={cases:incoming.cases,docs:incoming.docs};persist();refreshViews();renderDocs();alert("Sauvegarde importée.");
-    }catch(e){alert("Fichier de sauvegarde RELAIS invalide.");}
-    event.target.value="";
-  };
-  reader.readAsText(file);
-}
-function resetData(){
-  if(!confirm("Effacer tous les dossiers et toutes les listes enregistrés dans ce navigateur ?"))return;
-  data={cases:[],docs:[]};persist();refreshViews();renderDocs();alert("Les données locales ont été effacées.");
-}
-load();renderHome();renderCases();renderDeadlines();renderDocs();
+let state=loadState();let currentTab='home';let currentCaseId=null;let modalCallback=null;
+function loadState(){try{const raw=localStorage.getItem(KEY);if(raw){const d=JSON.parse(raw);if(d&&Array.isArray(d.cases))return {cases:d.cases,theme:d.theme==='light'?'light':'dark'};}}catch(e){}return {cases:[],theme:'dark'};}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){toast('Stockage indisponible : exportez régulièrement vos données.');}}
+function uid(){return 'r'+Date.now().toString(36)+Math.random().toString(36).slice(2,7)}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function dateFR(v){if(!v)return 'Non définie';let d=new Date(v+'T12:00:00');return isNaN(d)?'Date invalide':new Intl.DateTimeFormat('fr-FR',{day:'numeric',month:'short',year:'numeric'}).format(d)}
+function daysUntil(v){if(!v)return null;let a=new Date();a.setHours(0,0,0,0);let b=new Date(v+'T00:00:00');return Math.ceil((b-a)/86400000)}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.classList.remove('show'),2600)}
+function category(id){return CATEGORIES[id]||CATEGORIES.other}
+function progress(c){let n=c.steps?.length||0,d=(c.steps||[]).filter(s=>s.done).length;return n?Math.round(d/n*100):0}
+function statusLabel(c){return c.status==='resolved'?'Résolu':'En cours'}
+function badge(c){return c.status==='resolved'?'<span class="pill ok">✓ Résolu</span>':'<span class="pill blue">● En cours</span>'}
+function setTheme(theme){state.theme=theme==='light'?'light':'dark';document.documentElement.dataset.theme=state.theme;save();}
+function go(tab){currentTab=tab;document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));const view=document.getElementById('view-'+tab);if(view)view.classList.add('active');document.querySelectorAll('.nav-item').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));if(tab!=='detail')currentCaseId=null;window.scrollTo({top:0,behavior:'smooth'});render();}
+function caseRow(c){const cat=category(c.category),p=progress(c),due=daysUntil(c.deadline);let dueText=c.deadline?(due<0?'Échéance dépassée':due===0?"Échéance aujourd’hui":`Échéance dans ${due} j`):'Pas d’échéance';return `<button class="case-row" data-open-case="${esc(c.id)}" style="width:100%;text-align:left;color:inherit"><div class="case-symbol">${cat.icon}</div><div class="case-main"><strong>${esc(c.title)}</strong><div class="case-meta">${cat.label} · ${p}% terminé · ${dueText}</div><div class="progress"><i style="width:${p}%"></i></div></div><div class="case-side">${badge(c)}<div class="case-meta" style="margin-top:7px">Ouvrir ↗</div></div></button>`}
+function empty(msg='Aucun dossier pour le moment.',sub='Créez un dossier pour commencer à organiser vos actions.',action=true){return `<div class="empty"><div class="emoji">📂</div><b>${esc(msg)}</b>${esc(sub)}${action?'<div style="margin-top:14px"><button class="btn primary small" data-action="new-case">＋ Créer un dossier</button></div>':''}</div>`}
+function renderHome(){let active=state.cases.filter(c=>c.status!=='resolved'),resolved=state.cases.filter(c=>c.status==='resolved'),done=state.cases.reduce((n,c)=>n+(c.steps||[]).filter(s=>s.done).length,0),upcoming=state.cases.filter(c=>c.status!=='resolved'&&c.deadline&&daysUntil(c.deadline)>=0&&daysUntil(c.deadline)<=7);document.getElementById('statActive').textContent=active.length;document.getElementById('statDone').textContent=done;document.getElementById('statUpcoming').textContent=upcoming.length;document.getElementById('statResolved').textContent=resolved.length;
+ const next=active.find(c=>c.deadline&&daysUntil(c.deadline)>=0)||active[0];if(next){document.getElementById('heroTitle').textContent=next.title;document.getElementById('heroText').textContent=`Votre dossier est avancé à ${progress(next)} %. Reprenez la prochaine étape et gardez le suivi à jour.`;}else{document.getElementById('heroTitle').innerHTML='Un problème à résoudre ?<br>On le prend étape par étape.';document.getElementById('heroText').textContent='Décrivez votre situation et RELAIS vous aide à organiser les actions utiles, sans vous perdre dans les démarches.';}
+ document.getElementById('homeCases').innerHTML=active.length?active.slice(0,3).map(caseRow).join(''):empty();const deadlines=active.filter(c=>c.deadline).sort((a,b)=>a.deadline.localeCompare(b.deadline)).slice(0,3);document.getElementById('homeDeadlines').innerHTML=deadlines.length?deadlines.map(c=>`<div class="case-row"><div class="case-symbol">◷</div><div class="case-main"><strong>${esc(c.title)}</strong><div class="case-meta">${dateFR(c.deadline)}</div></div><div class="case-side"><span class="pill ${daysUntil(c.deadline)<0?'warn':'blue'}">${daysUntil(c.deadline)<0?'À vérifier':daysUntil(c.deadline)===0?"Aujourd’hui":`${daysUntil(c.deadline)} j`}</span></div></div>`).join(''):'<div class="empty">Aucune échéance enregistrée.</div>';}
+function renderCategories(filter=''){const f=filter.trim().toLowerCase();document.getElementById('categoryGrid').innerHTML=Object.entries(CATEGORIES).filter(([id,c])=>(c.label+' '+c.desc).toLowerCase().includes(f)).map(([id,c])=>`<button class="category" data-category="${id}"><span class="cat-icon">${c.icon}</span><b>${c.label}</b><small>${c.desc}</small><small style="color:var(--accent);margin-top:10px;font-weight:800">Voir le parcours →</small></button>`).join('')||empty('Aucun parcours trouvé.','Essayez un autre mot-clé.',false);}
+function renderCases(){const search=(document.getElementById('caseSearch')?.value||'').toLowerCase(),filter=document.getElementById('caseFilter')?.value||'all';let arr=state.cases.filter(c=>(filter==='all'||(filter==='resolved'?c.status==='resolved':c.status!=='resolved'))&&(c.title+' '+(c.description||'')+' '+category(c.category).label).toLowerCase().includes(search));arr.sort((a,b)=>{if(a.status!==b.status)return a.status==='resolved'?1:-1;return (a.deadline||'9999').localeCompare(b.deadline||'9999')});document.getElementById('caseList').innerHTML=arr.length?arr.map(caseRow).join(''):empty('Aucun résultat.','Modifiez votre recherche ou créez un dossier.',filter!=='resolved');let ds=state.cases.filter(c=>c.status!=='resolved'&&c.deadline).sort((a,b)=>a.deadline.localeCompare(b.deadline));document.getElementById('deadlineList').innerHTML=ds.length?ds.map(c=>`<button class="case-row" data-open-case="${esc(c.id)}" style="width:100%;text-align:left;color:inherit"><div class="case-symbol">🗓️</div><div class="case-main"><strong>${esc(c.title)}</strong><div class="case-meta">${dateFR(c.deadline)}</div></div><span class="pill ${daysUntil(c.deadline)<0?'warn':'blue'}">${daysUntil(c.deadline)<0?'Passée':daysUntil(c.deadline)===0?'Aujourd’hui':`${daysUntil(c.deadline)} jours`}</span></button>`).join(''):'<div class="empty">Aucune échéance à afficher.</div>';}
+function render(){if(currentTab==='home')renderHome();if(currentTab==='journeys')renderCategories(document.getElementById('journeySearch')?.value||'');if(currentTab==='cases')renderCases();}
+function openModal(title,html,callback){document.getElementById('modalTitle').textContent=title;document.getElementById('modalBody').innerHTML=html;document.getElementById('modalBackdrop').classList.add('open');modalCallback=callback||null;}
+function closeModal(){document.getElementById('modalBackdrop').classList.remove('open');modalCallback=null;}
+function newCase(prefCategory='other'){const opts=Object.entries(CATEGORIES).map(([id,c])=>`<option value="${id}" ${id===prefCategory?'selected':''}>${c.icon} ${c.label}</option>`).join('');openModal('Créer un dossier',`<div class="field"><label for="newTitle">Quel est le sujet ? *</label><input class="input" id="newTitle" maxlength="90" placeholder="Ex. : Obtenir une réponse à ma demande"></div><div class="field"><label for="newCategory">Catégorie</label><select id="newCategory" class="input">${opts}</select></div><div class="field"><label for="newDesc">Résumé de la situation (facultatif)</label><textarea id="newDesc" maxlength="600" placeholder="Décrivez les faits en quelques phrases. N’ajoutez pas de données sensibles."></textarea></div><div class="field"><label for="newDeadline">Échéance (facultatif)</label><input class="input" id="newDeadline" type="date"><div class="field-note">Vérifiez la date exacte auprès de l’organisme concerné.</div></div><div class="notice"><strong>Conseil :</strong> utilisez un titre général. N’inscrivez aucun mot de passe, code ou numéro confidentiel.</div><div class="modal-actions"><button class="btn" data-modal-close>Annuler</button><button class="btn primary" id="saveNewCase">Créer le dossier →</button></div>`);
+ document.getElementById('saveNewCase').onclick=()=>{const title=document.getElementById('newTitle').value.trim();if(!title){toast('Ajoutez un titre au dossier.');return;}const cat=document.getElementById('newCategory').value,template=category(cat);const c={id:uid(),title,category:cat,description:document.getElementById('newDesc').value.trim(),deadline:document.getElementById('newDeadline').value,status:'active',created:new Date().toISOString(),steps:template.steps.map((s,i)=>({id:uid(),title:s[0],description:s[1],done:false}))};state.cases.unshift(c);save();closeModal();go('cases');openDetail(c.id);toast('Dossier créé. Votre parcours est prêt.');};}
+function openJourney(catId){const c=category(catId);openModal(c.icon+' '+c.label,`<p style="color:var(--muted);margin-top:0">${c.desc}</p><p style="font-size:12px;color:var(--soft)">Voici les étapes proposées. Elles peuvent être adaptées une fois le dossier créé.</p><div>${c.steps.map((s,i)=>`<div class="step"><div class="case-symbol" style="width:30px;height:30px;flex-basis:30px;font-size:12px">${i+1}</div><div class="step-content"><b>${s[0]}</b><p>${s[1]}</p></div></div>`).join('')}</div><div class="modal-actions"><button class="btn" data-modal-close>Fermer</button><button class="btn primary" id="startJourney">Créer mon dossier →</button></div>`);document.getElementById('startJourney').onclick=()=>{closeModal();newCase(catId);};}
+function openDetail(id){const c=state.cases.find(x=>x.id===id);if(!c){go('cases');return;}currentCaseId=id;currentTab='detail';document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById('view-detail').classList.add('active');document.querySelectorAll('.nav-item').forEach(b=>b.classList.toggle('active',b.dataset.tab==='cases'));let cat=category(c.category),p=progress(c),done=(c.steps||[]).filter(s=>s.done).length;document.getElementById('detailContent').innerHTML=`<button class="text-btn" id="backCases">← Retour aux dossiers</button><div class="detail-head"><div class="case-symbol" style="height:52px;width:52px;flex-basis:52px;font-size:24px">${cat.icon}</div><div style="flex:1;min-width:0"><div class="eyebrow">${cat.label}</div><h2>${esc(c.title)}</h2><p>Créé le ${dateFR(c.created?.slice(0,10))} · ${badge(c)}</p></div></div><div class="card"><div style="display:flex;justify-content:space-between;gap:10px"><b>Progression</b><strong>${p}%</strong></div><div class="progress" style="height:8px;margin-top:10px"><i style="width:${p}%"></i></div><p>${done} étape(s) terminée(s) sur ${(c.steps||[]).length}.</p>${c.description?`<p style="margin-top:12px;color:var(--soft)">${esc(c.description)}</p>`:''}${c.deadline?`<p>◷ Échéance : <b>${dateFR(c.deadline)}</b> ${daysUntil(c.deadline)<0?'<span class="pill warn">Date passée</span>':''}</p>`:'<p>◷ Aucune échéance définie.</p>'}</div><div class="detail-actions"><button class="btn small" id="editCase">✎ Modifier</button><button class="btn small" id="addStep">＋ Ajouter une étape</button><button class="btn small" id="toggleResolved">${c.status==='resolved'?'↶ Rouvrir':'✓ Marquer comme résolu'}</button><button class="btn small danger" id="deleteCase">Supprimer</button></div><div class="section-head"><div><h3>Votre feuille de route</h3><p>Cochez les actions au fur et à mesure.</p></div></div><div class="card" id="stepsCard">${(c.steps||[]).map((s,i)=>`<div class="step ${s.done?'done':''}"><input type="checkbox" data-step="${esc(s.id)}" ${s.done?'checked':''} aria-label="Terminer ${esc(s.title)}"><div class="step-content"><b>${esc(s.title)}</b><p>${esc(s.description||'Étape personnalisée')}</p></div><button class="text-btn" style="padding:3px" data-remove-step="${esc(s.id)}" aria-label="Supprimer l’étape">×</button></div>`).join('')||'<p class="sub">Aucune étape. Ajoutez votre première action.</p>'}</div><div class="section-head"><div><h3>Journal de suivi</h3><p>Notez les avancées non sensibles et les réponses reçues.</p></div></div><div class="card"><textarea id="caseNotes" placeholder="Ex. : Appel effectué le 12/05, réponse attendue…" maxlength="1200">${esc(c.notes||'')}</textarea><div style="display:flex;justify-content:flex-end;margin-top:9px"><button class="btn primary small" id="saveNotes">Enregistrer la note</button></div></div><div class="notice"><strong>Rappel :</strong> les étapes sont indicatives. Vérifiez les informations officielles et les délais qui s’appliquent à votre situation.</div>`;
+ document.getElementById('backCases').onclick=()=>go('cases');document.getElementById('editCase').onclick=()=>editCase(c);document.getElementById('addStep').onclick=()=>addStep(c);document.getElementById('toggleResolved').onclick=()=>{c.status=c.status==='resolved'?'active':'resolved';c.resolvedAt=c.status==='resolved'?new Date().toISOString():null;save();openDetail(id);toast(c.status==='resolved'?'Dossier clôturé.':'Dossier rouvert.');};document.getElementById('deleteCase').onclick=()=>{if(confirm('Supprimer définitivement ce dossier de cet appareil ?')){state.cases=state.cases.filter(x=>x.id!==id);save();go('cases');toast('Dossier supprimé.');}};document.querySelectorAll('[data-step]').forEach(el=>el.onchange=()=>{let s=c.steps.find(x=>x.id===el.dataset.step);if(s)s.done=el.checked;save();openDetail(id);});document.querySelectorAll('[data-remove-step]').forEach(el=>el.onclick=()=>{if(confirm('Supprimer cette étape ?')){c.steps=c.steps.filter(x=>x.id!==el.dataset.removeStep);save();openDetail(id);}});document.getElementById('saveNotes').onclick=()=>{c.notes=document.getElementById('caseNotes').value;save();toast('Note enregistrée sur cet appareil.');};}
+function editCase(c){const opts=Object.entries(CATEGORIES).map(([id,x])=>`<option value="${id}" ${id===c.category?'selected':''}>${x.icon} ${x.label}</option>`).join('');openModal('Modifier le dossier',`<div class="field"><label>Titre</label><input id="editTitle" class="input" maxlength="90" value="${esc(c.title)}"></div><div class="field"><label>Catégorie</label><select id="editCategory" class="input">${opts}</select></div><div class="field"><label>Résumé</label><textarea id="editDesc" maxlength="600">${esc(c.description||'')}</textarea></div><div class="field"><label>Échéance</label><input id="editDeadline" class="input" type="date" value="${esc(c.deadline||'')}"></div><div class="modal-actions"><button class="btn" data-modal-close>Annuler</button><button class="btn primary" id="saveEdit">Enregistrer</button></div>`);document.getElementById('saveEdit').onclick=()=>{let title=document.getElementById('editTitle').value.trim();if(!title){toast('Le titre est obligatoire.');return;}c.title=title;c.category=document.getElementById('editCategory').value;c.description=document.getElementById('editDesc').value.trim();c.deadline=document.getElementById('editDeadline').value;save();closeModal();openDetail(c.id);toast('Dossier modifié.');};}
+function addStep(c){openModal('Ajouter une étape',`<div class="field"><label>Action à réaliser *</label><input id="stepTitle" class="input" maxlength="90" placeholder="Ex. : Appeler le service concerné"></div><div class="field"><label>Détail (facultatif)</label><textarea id="stepDesc" maxlength="220" placeholder="Une précision utile pour vous. Aucun secret."></textarea></div><div class="modal-actions"><button class="btn" data-modal-close>Annuler</button><button class="btn primary" id="saveStep">Ajouter</button></div>`);document.getElementById('saveStep').onclick=()=>{let title=document.getElementById('stepTitle').value.trim();if(!title){toast('Donnez un nom à cette étape.');return;}c.steps.push({id:uid(),title,description:document.getElementById('stepDesc').value.trim(),done:false});save();closeModal();openDetail(c.id);toast('Étape ajoutée.');};}
+function letterTool(){const html=`<p class="sub" style="margin-bottom:15px">Créez un brouillon à relire et à adapter. N’envoyez jamais un courrier sans vérifier vos droits, les faits et les coordonnées du destinataire.</p><div class="two-fields"><div class="field"><label>Type de courrier</label><select class="input" id="letterType"><option value="info">Demande de renseignement</option><option value="claim">Réclamation</option><option value="invoice">Contestation de facture</option><option value="delay">Demande de délai</option><option value="follow">Relance</option></select></div><div class="field"><label>Ton</label><select class="input" id="letterTone"><option value="polite">Courtois et simple</option><option value="formal">Formel</option></select></div></div><div class="field"><label>Destinataire / organisme</label><input class="input" id="letterTo" placeholder="Nom du service ou de l’organisme"></div><div class="field"><label>Votre nom (facultatif)</label><input class="input" id="letterFrom" placeholder="À compléter avant l’envoi"></div><div class="field"><label>Référence du dossier (facultatif)</label><input class="input" id="letterRef" placeholder="Référence non confidentielle"></div><div class="field"><label>Objet</label><input class="input" id="letterSubject" placeholder="Objet de votre demande"></div><div class="field"><label>Résumé factuel de la situation</label><textarea class="input" id="letterFacts" placeholder="Dates, faits et démarches déjà effectuées…"></textarea></div><div class="field"><label>Ce que vous demandez</label><textarea class="input" id="letterAsk" placeholder="La réponse ou l’action attendue…"></textarea></div><button class="btn primary" id="generateLetter">Générer le brouillon</button><div id="letterResult" class="hidden" style="margin-top:16px"><div class="section-head"><h3>Votre brouillon</h3><button class="text-btn" id="copyLetter">Copier</button></div><div class="template-output" id="letterOutput"></div><p class="field-note">Relisez, vérifiez les faits et remplacez les éléments entre crochets. Ce modèle n’est pas un avis juridique.</p></div>`;openModal('Préparer un courrier',html);document.getElementById('generateLetter').onclick=()=>{const type=document.getElementById('letterType').value,to=document.getElementById('letterTo').value.trim()||'[Nom de l’organisme]',from=document.getElementById('letterFrom').value.trim()||'[Votre nom]',ref=document.getElementById('letterRef').value.trim(),sub=document.getElementById('letterSubject').value.trim()||'Demande concernant ma situation',facts=document.getElementById('letterFacts').value.trim()||'[Décrivez les faits et les dates]',ask=document.getElementById('letterAsk').value.trim()||'[Précisez votre demande]',formal=document.getElementById('letterTone').value==='formal';const openings={info:'Je souhaite obtenir des renseignements concernant la situation suivante.',claim:'Je souhaite vous faire part d’une difficulté concernant la situation suivante.',invoice:'Je vous contacte au sujet de la facture mentionnée en objet, dont certains éléments nécessitent une vérification.',delay:'Je rencontre une difficulté pour respecter l’échéance prévue et souhaite connaître les possibilités de délai.',follow:'Je me permets de revenir vers vous concernant ma précédente demande.'};const output=`${to}\n\nObjet : ${sub}${ref?'\nRéférence : '+ref:''}\n\nMadame, Monsieur,\n\n${openings[type]}\n\n${facts}\n\n${ask}\n\nJe vous remercie par avance de l’attention portée à ma demande et reste disponible pour fournir les éléments complémentaires nécessaires.\n\n${formal?'Je vous prie d’agréer, Madame, Monsieur, l’expression de mes salutations distinguées.':'Cordialement,'}\n\n${from}`;document.getElementById('letterOutput').textContent=output;document.getElementById('letterResult').classList.remove('hidden');document.getElementById('copyLetter').onclick=()=>copyText(output);};}
+function documentsTool(){const opts=Object.entries(CATEGORIES).map(([id,c])=>`<option value="${id}">${c.icon} ${c.label}</option>`).join('');openModal('Liste de documents',`<p class="sub">Cette liste sert de point de départ. Seul l’organisme concerné peut confirmer les pièces obligatoires.</p><div class="field"><label>Type de démarche</label><select id="docsCategory" class="input">${opts}</select></div><div id="docsList" class="card"></div><div class="modal-actions"><button class="btn" data-modal-close>Fermer</button><button class="btn primary" id="copyDocs">Copier la liste</button></div>`);const update=()=>{let docs=category(document.getElementById('docsCategory').value).docs;document.getElementById('docsList').innerHTML=docs.map((d,i)=>`<div class="step"><input type="checkbox" class="docCheck" id="doc${i}"><label class="step-content" for="doc${i}"><b>${esc(d)}</b></label></div>`).join('');document.getElementById('copyDocs').onclick=()=>copyText(docs.map((d,i)=>(document.getElementById('doc'+i).checked?'[x] ':'[ ] ')+d).join('\n'));};document.getElementById('docsCategory').onchange=update;update();}
+function scamTool(){openModal('Vigilance face aux messages',`<p class="sub">Collez le texte d’un SMS ou e-mail en masquant au préalable les noms, numéros, adresses et autres données personnelles. L’analyse reste indicative et se fait dans votre navigateur.</p><div class="field"><label>Contenu du message</label><textarea id="scamText" maxlength="4000" placeholder="Collez ici le message, après avoir retiré les informations privées…"></textarea></div><button class="btn primary" id="scanMessage">Examiner les signaux</button><div id="scamResult"></div><p class="field-note">Cet outil ne sait pas vérifier l’expéditeur ni confirmer qu’un message est frauduleux. En cas de doute, ne cliquez pas et vérifiez via le site ou numéro officiel saisi séparément.</p>`);document.getElementById('scanMessage').onclick=()=>{const t=document.getElementById('scamText').value.toLowerCase();if(!t.trim()){toast('Ajoutez le texte à examiner.');return;}let signals=[];if(/urgent|immédiat|dernière chance|expire aujourd|sous 24h|sans délai/.test(t))signals.push('Un vocabulaire d’urgence ou de pression est présent.');if(/mot de passe|code de sécurité|code sms|code de validation|identifiant/.test(t))signals.push('Le message évoque des codes ou identifiants : ne les communiquez jamais.');if(/paiement|payer|virement|carte bancaire|rembourser|amende/.test(t))signals.push('Une demande d’argent ou de paiement est mentionnée.');if(/https?:\/\/|www\.|bit\.ly|tinyurl|\.fr\//.test(t))signals.push('Un lien est présent : ne l’ouvrez pas avant d’avoir vérifié le site indépendamment.');if(/colis|livraison|compte bloqué|impayé|gains|cadeau/.test(t))signals.push('Le thème fait partie de scénarios souvent utilisés dans des messages trompeurs.');const r=document.getElementById('scamResult');r.innerHTML=`<div class="result"><strong>${signals.length?'⚠️ Plusieurs éléments méritent votre vigilance.':'🔎 Aucun signal courant détecté dans le texte.'}</strong><p>${signals.length?signals.map(esc).join('<br>'):'Cela ne prouve absolument pas que le message est sûr. Les fraudeurs peuvent écrire des messages très crédibles.'}</p><p style="margin-top:9px">Ne partagez jamais de mot de passe ou de code de validation. Accédez au service par son application ou son site officiel, sans utiliser le lien reçu.</p><p><a href="https://www.cybermalveillance.gouv.fr/" target="_blank" rel="noopener">Conseils officiels Cybermalveillance ↗</a></p></div>`;};}
+function dateTool(){const cases=state.cases.filter(c=>c.status!=='resolved'),opts='<option value="">Ne pas associer à un dossier</option>'+cases.map(c=>`<option value="${esc(c.id)}">${esc(c.title)}</option>`).join('');openModal('Calculer une échéance',`<p class="sub">Le calcul ajoute un nombre de jours calendaires à une date de départ. Il ne tient pas compte des week-ends, jours fériés ni règles particulières de délais.</p><div class="two-fields"><div class="field"><label>Date de départ</label><input id="calcDate" type="date" class="input" value="${new Date().toISOString().slice(0,10)}"></div><div class="field"><label>Nombre de jours</label><input id="calcDays" type="number" class="input" min="0" max="3650" value="14"></div></div><div class="field"><label>Associer à un dossier (facultatif)</label><select id="calcCase" class="input">${opts}</select></div><div id="calcResult" class="result"><strong>Choisissez une date et une durée.</strong></div><div class="modal-actions"><button class="btn" data-modal-close>Fermer</button><button class="btn primary" id="saveCalcDate">Ajouter comme échéance</button></div>`);let calculated=null;const update=()=>{const d=document.getElementById('calcDate').value,n=Number(document.getElementById('calcDays').value);if(!d||!Number.isInteger(n)||n<0||n>3650){calculated=null;document.getElementById('calcResult').innerHTML='<strong>Vérifiez les valeurs saisies.</strong>';return;}let dt=new Date(d+'T12:00:00');dt.setDate(dt.getDate()+n);calculated=dt.getFullYear()+'-'+String(dt.getMonth()+1).padStart(2,'0')+'-'+String(dt.getDate()).padStart(2,'0');document.getElementById('calcResult').innerHTML=`<strong>Résultat : ${dateFR(calculated)}</strong><p>${n} jour(s) calendaire(s) après le ${dateFR(d)}.</p>`;};document.getElementById('calcDate').onchange=update;document.getElementById('calcDays').oninput=update;update();document.getElementById('saveCalcDate').onclick=()=>{if(!calculated){toast('Vérifiez la date et la durée.');return;}let id=document.getElementById('calcCase').value;if(!id){toast('Choisissez un dossier pour enregistrer cette échéance.');return;}let c=state.cases.find(x=>x.id===id);if(c){c.deadline=calculated;save();closeModal();render();toast('Échéance ajoutée au dossier.');}};}
+function copyText(txt){if(navigator.clipboard?.writeText){navigator.clipboard.writeText(txt).then(()=>toast('Copié dans le presse-papiers.')).catch(()=>fallbackCopy(txt));}else fallbackCopy(txt)}function fallbackCopy(txt){const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');toast('Copié dans le presse-papiers.')}catch(e){toast('Copie impossible sur ce navigateur.')}ta.remove();}
+function exportData(){const data={app:'RELAIS',version:1,exportedAt:new Date().toISOString(),cases:state.cases,theme:state.theme};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='relais-sauvegarde-'+new Date().toISOString().slice(0,10)+'.json';a.click();URL.revokeObjectURL(url);toast('Sauvegarde exportée.');}
+function importData(file){const reader=new FileReader();reader.onload=()=>{try{const d=JSON.parse(reader.result);if(!d||!Array.isArray(d.cases)||d.cases.some(c=>!c||typeof c.title!=='string'||!Array.isArray(c.steps)))throw Error('format');if(!confirm('Importer cette sauvegarde et remplacer les dossiers actuels ?'))return;state.cases=d.cases.map(c=>({...c,category:CATEGORIES[c.category]?c.category:'other',status:c.status==='resolved'?'resolved':'active'}));save();setTheme(d.theme);go('home');toast('Sauvegarde importée.');}catch(e){toast('Fichier invalide ou non reconnu.');}};reader.readAsText(file);}
+// Global navigation and event delegation
+document.addEventListener('click',e=>{const tab=e.target.closest('[data-tab]');if(tab){go(tab.dataset.tab);return;}const goBtn=e.target.closest('[data-go]');if(goBtn){go(goBtn.dataset.go);return;}const act=e.target.closest('[data-action]');if(act){const a=act.dataset.action;if(a==='new-case')newCase();if(a==='letter')letterTool();if(a==='documents')documentsTool();if(a==='scam')scamTool();if(a==='datecalc')dateTool();return;}const cat=e.target.closest('[data-category]');if(cat){openJourney(cat.dataset.category);return;}const caseBtn=e.target.closest('[data-open-case]');if(caseBtn){openDetail(caseBtn.dataset.openCase);return;}if(e.target.closest('[data-modal-close]'))closeModal();});
+document.getElementById('quickAdd').onclick=()=>newCase();document.getElementById('themeBtn').onclick=()=>setTheme(state.theme==='dark'?'light':'dark');document.getElementById('darkTheme').onclick=()=>setTheme('dark');document.getElementById('lightTheme').onclick=()=>setTheme('light');document.getElementById('modalClose').onclick=closeModal;document.getElementById('modalBackdrop').addEventListener('click',e=>{if(e.target.id==='modalBackdrop')closeModal();});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});document.querySelector('[data-action="new-case"]')?.addEventListener('keydown',()=>{});
+document.getElementById('journeySearch').addEventListener('input',e=>renderCategories(e.target.value));document.getElementById('caseSearch').addEventListener('input',renderCases);document.getElementById('caseFilter').addEventListener('change',renderCases);document.getElementById('exportBtn').onclick=exportData;document.getElementById('importBtn').onclick=()=>document.getElementById('importFile').click();document.getElementById('importFile').onchange=e=>{if(e.target.files[0])importData(e.target.files[0]);e.target.value='';};document.getElementById('resetBtn').onclick=()=>{if(confirm('Effacer définitivement tous les dossiers enregistrés sur cet appareil ? Pensez à exporter une sauvegarde avant.')){state.cases=[];save();go('home');toast('Données locales réinitialisées.');}};
+setTheme(state.theme);render();
+})();
 </script>
 </body>
 </html>
